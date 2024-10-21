@@ -36,36 +36,35 @@ def get_Nasa_Data():
 
     # Covert string to float
     iss_latitude = float(iss_latitude)
-    iss_longitude = abs(float(iss_longitude))
+    iss_longitude = (float(iss_longitude))
 
 
 def run():
     
     toronto_lat = 43.6532
-    toronto_lon = 79.3832
+    toronto_lon = -79.3832
 
     new_york_lat = 40.7128
-    new_york_lon = 74.0060
+    new_york_lon = -74.0060
 
     iss_distance_toronto = distance_haversine(toronto_lat, toronto_lon, iss_latitude, iss_longitude)
     new_york_distance_toronto = distance_haversine(toronto_lat, toronto_lon, new_york_lat, new_york_lon)
 
 
     winnipeg_lat = 49.8954
-    winnipeg_lon = 97.1385
+    winnipeg_lon = -97.1385
 
     minneapolis_lat = 44.977
-    minneapolis_long = 93.2650
+    minneapolis_lon = -93.2650
 
     iss_distance_winnipeg = distance_haversine(winnipeg_lat, winnipeg_lon, iss_latitude, iss_longitude)
-    minneapolis_distance_winnipeg = distance_haversine(winnipeg_lat, winnipeg_lon, minneapolis_lat, minneapolis_long)
-
+    minneapolis_distance_winnipeg = distance_haversine(winnipeg_lat, winnipeg_lon, minneapolis_lat, minneapolis_lon)
 
     vancouver_lat = 49.2827
-    vancouver_lon = 123.1207
+    vancouver_lon = -123.1207
 
     calgary_lat = 51.0447
-    calgary_lon = 114.0719
+    calgary_lon = -114.0719
 
     iss_distance_vancouver = distance_haversine(vancouver_lat, vancouver_lon, iss_latitude, iss_longitude)
     calgary_distance_vancouver = distance_haversine(vancouver_lat, vancouver_lon, calgary_lat, calgary_lon)
@@ -116,7 +115,7 @@ def run():
 
         message = client.messages.create(
             from_='+18646190794',
-            body=f'The ISS is appraoching you in the next ten minutes! Latitude: {iss_latitude}°, Longitude: {iss_longitude}° ',
+            body=f'The ISS is approaching you in the next ten minutes! Latitude: {iss_latitude}°, Longitude: {iss_longitude}° ',
             to=os.getenv("ADITYA_NUMBER")
         )
 
